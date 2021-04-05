@@ -65,7 +65,7 @@ function ChatRoom() {
   //reference a firestore collection
   const messagesRef = firestore.collection("messages");
   //search for a subset of documents
-  const query = messagesRef.orderBy("createdAt").limit(25);
+  const query = messagesRef.orderBy("createdAt").limitToLast(25);
   //actually make the query and listn for any updates
   //this returns an array of objects, each object is the message in the database
   //anytime the data changes, react will rerender with the current data
@@ -111,7 +111,9 @@ function ChatRoom() {
           //bind state to form inputr
           onChange={(e) => setFormValue(e.target.value)}
         />
-        <button type="submit">Send</button>
+        <button type="submit" disabled={!formValue}>
+          Send
+        </button>
       </form>
     </>
   );
