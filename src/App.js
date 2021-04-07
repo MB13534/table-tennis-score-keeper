@@ -31,7 +31,26 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+// Document reference
 const totalTotalRef = db.collection("counter").doc("total");
+const inTotalRef = db.collection("counter").doc("total");
+const outTotalRef = db.collection("counter").doc("total");
+
+const total18thRef = db.collection("counter").doc("18th");
+const in18thRef = db.collection("counter").doc("18th");
+const out18thRef = db.collection("counter").doc("18th");
+
+const totalMavenRef = db.collection("counter").doc("maven");
+const inMavenRef = db.collection("counter").doc("maven");
+const outMavenRef = db.collection("counter").doc("maven");
+
+const totalWazeeRef = db.collection("counter").doc("wazee");
+const inWazeeRef = db.collection("counter").doc("wazee");
+const outWazeeRef = db.collection("counter").doc("wazee");
+
+const totalAlleyRef = db.collection("counter").doc("alley");
+const inAlleyRef = db.collection("counter").doc("alley");
+const outAlleyRef = db.collection("counter").doc("alley");
 
 function App() {
   //if user is signed in, user is an object, if not, user is null
@@ -55,10 +74,26 @@ function Main() {
         <Total db={db} totalTotalRef={totalTotalRef} />
       </section>
       <section className="streets">
-        <Streets db={db} />
+        <Streets
+          totalTotalRef={totalTotalRef}
+          inTotalRef={inTotalRef}
+          outTotalRef={outTotalRef}
+          total18thRef={total18thRef}
+          in18thRef={in18thRef}
+          out18thRef={out18thRef}
+          totalMavenRef={totalMavenRef}
+          inMavenRef={inMavenRef}
+          outMavenRef={outMavenRef}
+          totalWazeeRef={totalWazeeRef}
+          inWazeeRef={inWazeeRef}
+          outWazeeRef={outWazeeRef}
+          totalAlleyRef={totalAlleyRef}
+          inAlleyRef={inAlleyRef}
+          outAlleyRef={outAlleyRef}
+        />
       </section>
       <footer>
-        <Footer />
+        <Footer db={db} auth={auth} />
       </footer>
     </>
   );
