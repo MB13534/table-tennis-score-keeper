@@ -3,22 +3,19 @@ import "firebase/firestore";
 import "firebase/auth";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+// import { useCollectionData } from "react-firebase-hooks/firestore";
 
-import { useRef, useState } from "react";
+// import { useRef, useState } from "react";
 
 //css
 import "./App.css";
 
-//images
-// import dog from "./images.dog.jpg";
-// console.log(dog);
-
 //components
 import SignIn from "./components/SignIn";
-import SignOut from "./components/SignOut";
+import Header from "./components/Header";
 import Streets from "./components/Streets";
 import Total from "./components/Total";
+import Footer from "./components/Footer";
 
 //this object comes from creating your app in firebase
 firebase.initializeApp({
@@ -32,7 +29,9 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
+const db = firebase.firestore();
+
+const totalTotalRef = db.collection("counter").doc("total");
 
 function App() {
   //if user is signed in, user is an object, if not, user is null
@@ -41,30 +40,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="title">
-          <img
-            src="https://img.icons8.com/plasticine/100/000000/milk-bottle.png"
-            alt="Milk Bottle"
-          />
-          <h1>MilkCount</h1>
-        </div>
-        <SignOut auth={auth} />
+        <Header auth={auth} />
       </header>
 
       <main>{user ? <Main /> : <SignIn auth={auth} />}</main>
-
-      <footer>
-        <div className="poster">
-          <img
-            src="https://barkpost.com/wp-content/uploads/2019/08/newfoundland-dog-sleepy.jpg"
-            alt="dog pic"
-          />
-          <p>@ Wazee St:</p> <strong>+1</strong>
-        </div>
-        <button className="reset">
-          <i className="fas fa-backspace"></i>
-        </button>
-      </footer>
     </div>
   );
 }
@@ -73,9 +52,14 @@ function Main() {
   return (
     <>
       <section className="controls">
-        <Total />
+        <Total db={db} totalTotalRef={totalTotalRef} />
       </section>
-      <Streets />
+      <section className="streets">
+        <Streets db={db} />
+      </section>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
