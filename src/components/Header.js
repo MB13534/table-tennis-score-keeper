@@ -3,7 +3,7 @@ import SignOut from "./SignOut";
 
 const Header = ({ auth }) => {
   return (
-    <>
+    <div className="container">
       <div className="title">
         <img
           src="https://img.icons8.com/plasticine/100/000000/milk-bottle.png"
@@ -12,7 +12,7 @@ const Header = ({ auth }) => {
         <h1>MilkCount</h1>
       </div>
       <SignOut auth={auth} />
-    </>
+    </div>
   );
 };
 

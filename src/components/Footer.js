@@ -28,7 +28,7 @@ const Footer = ({ db, auth }) => {
   }
 
   return (
-    <>
+    <div className="container">
       <div className="poster">
         <img src={auth.currentUser.photoURL} alt="dog pic" />
         {/* <p>@ Wazee St:</p> <strong>+1</strong> */}
@@ -36,7 +36,7 @@ const Footer = ({ db, auth }) => {
       <button onClick={handleReset} className="reset">
         <i className="fas fa-backspace"></i>
       </button>
-    </>
+    </div>
   );
 };
 
