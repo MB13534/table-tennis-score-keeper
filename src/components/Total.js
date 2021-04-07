@@ -5,9 +5,17 @@ const Total = ({ totalTotalRef }) => {
   totalTotalRef.onSnapshot((doc) => {
     setTotal(doc.data().total);
   });
+
   return (
     <div className="total">
-      <h1>{total}</h1>
+      <input
+        className="value"
+        type="number"
+        value={total}
+        onChange={(e) => {
+          totalTotalRef.update({ total: Number(e.target.value) });
+        }}
+      />
     </div>
   );
 };

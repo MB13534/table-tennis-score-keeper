@@ -129,6 +129,19 @@ footer strong {
   font-size: 4.5rem;
   line-height: 4.5rem;
 }
+
+.value {
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+  background-color: rgb(40, 37, 53);
+  color: white;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  width: 125px;
+  height: 80px;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .small {
   background-color: #181717;
   height: 50px;
