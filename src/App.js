@@ -10,6 +10,16 @@ import { useRef, useState } from "react";
 //css
 import "./App.css";
 
+//images
+// import dog from "./images.dog.jpg";
+// console.log(dog);
+
+//components
+import SignIn from "./components/SignIn";
+import SignOut from "./components/SignOut";
+import Streets from "./components/Streets";
+import Total from "./components/Total";
+
 //this object comes from creating your app in firebase
 firebase.initializeApp({
   apiKey: "AIzaSyDwNSlxQ-L5lFcBctdXPxc62D05s0nKlkY",
@@ -31,106 +41,42 @@ function App() {
   return (
     <div className="App">
       <header>
-        <SignOut />
+        <div className="title">
+          <img
+            src="https://img.icons8.com/plasticine/100/000000/milk-bottle.png"
+            alt="Milk Bottle"
+          />
+          <h1>MilkCount</h1>
+        </div>
+        <SignOut auth={auth} />
       </header>
 
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      <main>{user ? <Main /> : <SignIn auth={auth} />}</main>
+
+      <footer>
+        <div className="poster">
+          <img
+            src="https://barkpost.com/wp-content/uploads/2019/08/newfoundland-dog-sleepy.jpg"
+            alt="dog pic"
+          />
+          <p>@ Wazee St:</p> <strong>+1</strong>
+        </div>
+        <button className="reset">
+          <i className="fas fa-backspace"></i>
+        </button>
+      </footer>
     </div>
   );
 }
 
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  };
-  return (
-    <button className="sign-in" onClick={signInWithGoogle}>
-      Sign in with Google
-    </button>
-  );
-}
-
-function SignOut() {
-  //check to see if there is a current user signed in, if there is, render a sign out button
-  return (
-    auth.currentUser && <button onClick={() => auth.signOut()}>Sign Out</button>
-  );
-}
-
-function ChatRoom() {
-  /* this reference will make it scroll to the bottom after you click send */
-  const dummy = useRef();
-
-  //reference a firestore collection
-  const messagesRef = firestore.collection("messages");
-  //search for a subset of documents
-  const query = messagesRef.orderBy("createdAt").limitToLast(25);
-  //actually make the query and listn for any updates
-  //this returns an array of objects, each object is the message in the database
-  //anytime the data changes, react will rerender with the current data
-  const [messages] = useCollectionData(query, { idField: "id" });
-
-  const [formValue, setFormValue] = useState("");
-
-  //update firestore when user submits message, prevent page from reloading
-  const sendMessage = async (e) => {
-    e.preventDefault();
-    //get current users credentials
-    const { uid, photoURL } = auth.currentUser;
-
-    //create new document in firestore, takes JS object as argument
-    await messagesRef.add({
-      text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      photoURL,
-      uid,
-    });
-
-    //set formValue back to empty string
-    setFormValue("");
-
-    //reference is at the bottom of the page, scroll to that reference
-    dummy.current.scrollIntoView({ behavior: "smooth" });
-  };
-
+function Main() {
   return (
     <>
-      <main>
-        {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-
-        {/* this reference will make it scroll to the bottom after you click send */}
-        <div ref={dummy}></div>
-      </main>
-
-      {/* on submit writes value to firestore */}
-      <form onSubmit={sendMessage}>
-        <input
-          value={formValue}
-          //bind state to form inputr
-          onChange={(e) => setFormValue(e.target.value)}
-        />
-        <button type="submit" disabled={!formValue}>
-          Send
-        </button>
-      </form>
+      <section className="controls">
+        <Total />
+      </section>
+      <Streets />
     </>
-  );
-}
-
-function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
-
-  //check to see if the uid from the message is the user that is logged in
-  //if it is, messageClass = 'sent', else 'received'
-  const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
-
-  return (
-    <div className={`message ${messageClass}`}>
-      <img src={photoURL} alt={uid} />
-      <p>{text}</p>
-    </div>
   );
 }
 

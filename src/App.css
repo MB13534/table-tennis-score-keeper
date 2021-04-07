@@ -1,5 +1,6 @@
 body {
   background-color: #282c34;
+  color: white;
 }
 
 .App {
@@ -12,7 +13,6 @@ body {
   background-color: #181717;
   height: 10vh;
   min-height: 50px;
-  color: white;
   position: fixed;
   width: 100%;
   max-width: 728px;
@@ -25,72 +25,39 @@ body {
   box-sizing: border-box;
 }
 
-.App section {
+.title {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  align-items: center;
+}
+
+.title img {
+  height: 50px;
+  width: 50px;
+  margin: 0 -15px;
+}
+
+.App header h1 {
+  font-weight: normal;
 }
 
 main {
-  padding: 10px;
   height: 80vh;
   margin: 10vh 0 10vh;
-  overflow-y: scroll;
+  background-color: rgb(40, 37, 53);
   display: flex;
   flex-direction: column;
-}
-
-main::-webkit-scrollbar {
-  width: 0.25rem;
-}
-
-main::-webkit-scrollbar-track {
-  background: #1e1e24;
-}
-
-main::-webkit-scrollbar-thumb {
-  background: #6649b8;
-}
-
-form {
-  height: 10vh;
-  position: fixed;
-  bottom: 0;
-  background-color: rgb(24, 23, 23);
-  width: 100%;
-  max-width: 728px;
-  display: flex;
-  font-size: 1.5rem;
-}
-
-form button {
-  width: 20%;
-  background-color: rgb(56, 56, 143);
-}
-
-input {
-  line-height: 1.5;
-  width: 100%;
-  font-size: 1.5rem;
-  background: rgb(58, 58, 58);
-  color: white;
-  outline: none;
-  border: none;
-  padding: 0 10px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 button {
   background-color: #282c34; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-size: 1.25rem;
 }
 
 button:disabled {
@@ -103,42 +70,45 @@ button:disabled {
   background: white;
   max-width: 400px;
   margin: 0 auto;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1.25rem;
 }
 
-ul,
-li {
-  text-align: left;
-  list-style: none;
+.sign-out {
+  padding: 8px 16px;
+  border-radius: 5px;
 }
 
-p {
-  max-width: 500px;
-  margin-bottom: 12px;
-  line-height: 24px;
-  padding: 10px 20px;
-  border-radius: 25px;
-  position: relative;
-  color: white;
-  text-align: center;
+/* main::-webkit-scrollbar {
+  width: 0.25rem;
 }
 
-.message {
+main::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #6649b8;
+} */
+
+footer {
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(24, 23, 23);
+  width: 100%;
+  max-width: 728px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
 }
 
-.sent {
-  flex-direction: row-reverse;
-}
-
-.sent p {
-  color: white;
-  background: #0b93f6;
-  align-self: flex-end;
-}
-.received p {
-  background: #e5e5ea;
-  color: black;
+.poster {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
 img {
@@ -146,4 +116,58 @@ img {
   height: 40px;
   border-radius: 50%;
   margin: 2px 5px;
+}
+
+/* footer p {
+  margin: 0;
+} */
+
+footer strong {
+  font-size: 2rem;
+  margin-left: 10px;
+}
+
+.reset {
+  height: 40px;
+  width: 40px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.controls {
+}
+
+.total {
+  border: solid white 10px;
+  border-radius: 50%;
+  width: 50vw;
+  height: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total h1 {
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+}
+.small {
+  background-color: #181717;
+  height: 50px;
+  width: 80px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.streets {
+  width: 90%;
+}
+
+.street {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
