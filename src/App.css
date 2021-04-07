@@ -60,6 +60,10 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
