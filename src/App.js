@@ -21,13 +21,13 @@ import Player from "./components/Player";
 
 //this object comes from creating your app in firebase
 firebase.initializeApp({
-  apiKey: "AIzaSyAmljnfvGM060JfjL3q0ahY4Fnv5Or1gX4",
-  authDomain: "table-tennis-score-keeper.firebaseapp.com",
-  projectId: "table-tennis-score-keeper",
-  storageBucket: "table-tennis-score-keeper.appspot.com",
-  messagingSenderId: "841889031459",
-  appId: "1:841889031459:web:4cb72c62885d3b27da1896",
-  measurementId: "G-LF3XLQ05TY",
+  apiKey: "AIzaSyBK0NPe5U_1e-8pgND7iYH-688nLSYDev4",
+  authDomain: "table-tennis-production.firebaseapp.com",
+  projectId: "table-tennis-production",
+  storageBucket: "table-tennis-production.appspot.com",
+  messagingSenderId: "170366675200",
+  appId: "1:170366675200:web:e3954775c2f910884dabe5",
+  measurementId: "G-J0PGP6EYP9",
 });
 
 const auth = firebase.auth();
