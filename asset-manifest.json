@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/table-tennis-score-keeper/static/css/main.23262026.chunk.css",
-    "main.js": "/table-tennis-score-keeper/static/js/main.03376727.chunk.js",
-    "main.js.map": "/table-tennis-score-keeper/static/js/main.03376727.chunk.js.map",
+    "main.js": "/table-tennis-score-keeper/static/js/main.7ce34e23.chunk.js",
+    "main.js.map": "/table-tennis-score-keeper/static/js/main.7ce34e23.chunk.js.map",
     "runtime-main.js": "/table-tennis-score-keeper/static/js/runtime-main.2d2c0a9a.js",
     "runtime-main.js.map": "/table-tennis-score-keeper/static/js/runtime-main.2d2c0a9a.js.map",
     "static/css/2.6c0f60ba.chunk.css": "/table-tennis-score-keeper/static/css/2.6c0f60ba.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.6c0f60ba.chunk.css",
     "static/js/2.f2e9a5b6.chunk.js",
     "static/css/main.23262026.chunk.css",
-    "static/js/main.03376727.chunk.js"
+    "static/js/main.7ce34e23.chunk.js"
   ]
 }
