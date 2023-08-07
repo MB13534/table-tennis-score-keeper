@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import { Button } from "@mui/material";
 
 const SignIn = ({ auth }) => {
   const signInWithGoogle = () => {
@@ -6,9 +7,18 @@ const SignIn = ({ auth }) => {
     auth.signInWithPopup(provider);
   };
   return (
-    <button className="sign-in" onClick={signInWithGoogle}>
-      Sign in with Google
-    </button>
+    <Button
+      color="secondary"
+      variant="contained"
+      onClick={signInWithGoogle}
+      sx={{
+        my: 2,
+        color: "white",
+        display: "block",
+      }}
+    >
+      Sign in
+    </Button>
   );
 };
 
